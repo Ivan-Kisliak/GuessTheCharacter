@@ -14,7 +14,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController()
+        
+        let gameVC = GameViewController()
+        let navigationController = UINavigationController(rootViewController: gameVC)
+        
+        let gameAssembly = GameAssembly(navigationController: navigationController)
+        gameAssembly.configure(viewController: gameVC)
+        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
     }
