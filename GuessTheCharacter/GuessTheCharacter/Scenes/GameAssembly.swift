@@ -7,20 +7,27 @@
 
 import UIKit
 
-final class GameAssembly {
-    private let navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-    
+protocol IBaseAssembly {
+    func configure(viewController: UIViewController)
 }
 
-extension GameAssembly: BaseAssembly {
+
+final class GameAssembly {
+    private let navigationController: UINavigationController
+    private let characterManager: ICharacterManager
+    
+    init(navigationController: UINavigationController, characterManager: ICharacterManager) {
+        self.navigationController = navigationController
+        self.characterManager = characterManager
+    }
+}
+
+//MARK: - IBaseAssembly
+extension GameAssembly: IBaseAssembly {
     func configure(viewController: UIViewController) {
         guard let gameVC = viewController as? GameViewController else { return }
-        let presenter = GamePresenter()
+        let presenter = GamePresenter(view: gameVC, characterManager: characterManager)
+        
         gameVC.presenter = presenter
-        presenter.view = gameVC
     }
 }

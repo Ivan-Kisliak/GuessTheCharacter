@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 protocol ICharacterManager {
     func getRandomCharacters(count: Int) -> [Character]
 }
@@ -23,9 +21,9 @@ class CharacterManager {
         Character(name: "Чебурашка", image: "Cheburashka"),
         Character(name: "Пяточок", image: "Pig")
     ]
-
 }
 
+//MARK: - ICharaceterManager
 extension CharacterManager: ICharacterManager {
     func getRandomCharacters(count: Int) -> [Character] {
         Array(characters.shuffled().prefix(count))
