@@ -42,3 +42,4 @@ extension GamePresenter: IGamePresenter {
         view?.showResult(isCorrect: isCorrect, score: score)
     }
 }
+

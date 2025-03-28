@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let gameVC = GameViewController()
         let navigationController = UINavigationController(rootViewController: gameVC)
         
-        let gameAssembly = GameAssembly(navigationController: navigationController, 
+        let gameAssembly = GameAssembly(navigationController: navigationController,
                                         characterManager: characterManager)
         gameAssembly.configure(viewController: gameVC)
         

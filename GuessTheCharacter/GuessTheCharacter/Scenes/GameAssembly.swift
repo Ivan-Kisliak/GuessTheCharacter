@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol IBaseAssembly {
-    func configure(viewController: UIViewController)
-}
-
-
 final class GameAssembly {
     private let navigationController: UINavigationController
     private let characterManager: ICharacterManager
@@ -31,3 +26,6 @@ extension GameAssembly: IBaseAssembly {
         gameVC.presenter = presenter
     }
 }
+
+
+
