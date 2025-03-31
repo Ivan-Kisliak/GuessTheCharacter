@@ -8,8 +8,7 @@
 import UIKit
 
 protocol IGameViewController: AnyObject {
-    func display(viewModel: ViewModel)
-    func showResult(isCorrect: Bool, score: Int)
+    func render(viewModel: ViewModel)
 }
 
 final class GameViewController: UIViewController {
@@ -102,24 +101,13 @@ private extension GameViewController {
 
 //MARK: - IGameViewController
 extension GameViewController: IGameViewController {
-    
-    func display(viewModel: ViewModel) {
+    func render(viewModel: ViewModel) {
         titleLabel.text = "Кто это: \(viewModel.question)?"
         viewModel.characters.enumerated().forEach {
-                if let imageName = $1.image {
-                    provideCharactrerButtons()[$0].setImage(UIImage(named: imageName), for: .normal)
-                }
+            if let imageName = $1.image {
+                provideCharactrerButtons()[$0].setImage(UIImage(named: imageName), for: .normal)
             }
         }
-    
-    func showResult(isCorrect: Bool, score: Int) {
-        let alert = UIAlertController(title: isCorrect ? "Верно!" : "Неправильно",
-                                      message: "Счёт: \(score)",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Продолжить", style: .default) { [weak self] _ in
-            self?.presenter?.loadGame()
-        })
-        present(alert, animated: true)
     }
 }
 

@@ -42,14 +42,14 @@ extension GamePresenter: IGamePresenter {
         characterAnswer = characters.randomElement()
         
         let viewModel = ViewModel(characters: characters, question: characterAnswer?.name ?? "")
-        view?.display(viewModel: viewModel)
+        view?.render(viewModel: viewModel)
     }
     
     func characterSelected(at index: Int) {
         let selectedCharacter = characters[index]
         let isCorrect = selectedCharacter.name == characterAnswer?.name
         score += isCorrect ? 1 : -1
-        view?.showResult(isCorrect: isCorrect, score: score)
+        router.showResult(isCorrect: isCorrect, score: score)
     }
 }
 
