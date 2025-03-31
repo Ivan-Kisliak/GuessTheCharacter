@@ -21,8 +21,12 @@ final class GameAssembly {
 extension GameAssembly: IBaseAssembly {
     func configure(viewController: UIViewController) {
         guard let gameVC = viewController as? GameViewController else { return }
-        let presenter = GamePresenter(view: gameVC, characterManager: characterManager)
+        let router = GameRouter(viewController: gameVC)
+        let presenter = GamePresenter(view: gameVC,
+                                      characterManager: characterManager,
+                                      router: router)
         
+        router.delegate = presenter
         gameVC.presenter = presenter
     }
 }

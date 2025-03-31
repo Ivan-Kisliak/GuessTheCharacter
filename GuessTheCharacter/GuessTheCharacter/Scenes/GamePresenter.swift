@@ -23,13 +23,15 @@ protocol IGamePresenter {
 final class GamePresenter{
     private weak var view: IGameViewController?
     private let characterManager: ICharacterManager
+    private let router: IGameRouter
     private var characters: [Character] = []
     private var characterAnswer: Character?
     private var score = 0
     
-    init(view: IGameViewController, characterManager: ICharacterManager) {
+    init(view: IGameViewController, characterManager: ICharacterManager, router: IGameRouter) {
         self.view = view
         self.characterManager = characterManager
+        self.router = router
     }
 }
 
@@ -51,4 +53,10 @@ extension GamePresenter: IGamePresenter {
     }
 }
 
+// MARK: - IGameRouterDelegate
+extension GamePresenter: IGameRouterDelegate {
+    func didDismissAlert() {
+        loadGame()
+    }
+}
 
