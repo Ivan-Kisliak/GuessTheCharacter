@@ -7,6 +7,12 @@
 
 import Foundation
 
+//MARK: - ViewModel
+struct ViewModel {
+    let characters: [Character]
+    let question: String
+}
+
 // MARK: - Presenter Protocol
 protocol IGamePresenter {
     func loadGame()
@@ -32,7 +38,9 @@ extension GamePresenter: IGamePresenter {
     func loadGame() {
         characters = characterManager.getRandomCharacters(count: 3)
         characterAnswer = characters.randomElement()
-        view?.displayCharacters(characters, question: "\(characterAnswer?.name ?? "")")
+        
+        let viewModel = ViewModel(characters: characters, question: characterAnswer?.name ?? "")
+        view?.display(viewModel: viewModel)
     }
     
     func characterSelected(at index: Int) {
@@ -43,4 +51,4 @@ extension GamePresenter: IGamePresenter {
     }
 }
 
-//test
+

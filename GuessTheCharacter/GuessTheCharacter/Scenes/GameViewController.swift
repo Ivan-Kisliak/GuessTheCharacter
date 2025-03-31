@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IGameViewController: AnyObject {
-    func displayCharacters(_ characters: [Character], question: String)
+    func display(viewModel: ViewModel)
     func showResult(isCorrect: Bool, score: Int)
 }
 
@@ -102,14 +102,15 @@ private extension GameViewController {
 
 //MARK: - IGameViewController
 extension GameViewController: IGameViewController {
-    func displayCharacters(_ characters: [Character], question: String) {
-        titleLabel.text = "Кто это: \(question)?"
-        characters.enumerated().forEach {
-            if let imageName = $1.image {
-                provideCharactrerButtons()[$0].setImage(UIImage(named: imageName), for: .normal)
+    
+    func display(viewModel: ViewModel) {
+        titleLabel.text = "Кто это: \(viewModel.question)?"
+        viewModel.characters.enumerated().forEach {
+                if let imageName = $1.image {
+                    provideCharactrerButtons()[$0].setImage(UIImage(named: imageName), for: .normal)
+                }
             }
         }
-    }
     
     func showResult(isCorrect: Bool, score: Int) {
         let alert = UIAlertController(title: isCorrect ? "Верно!" : "Неправильно",

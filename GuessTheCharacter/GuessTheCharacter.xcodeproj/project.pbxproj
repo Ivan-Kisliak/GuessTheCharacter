@@ -17,6 +17,7 @@
 		2C9FB2402D92D80F00D43054 /* GameAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FB23F2D92D80F00D43054 /* GameAssembly.swift */; };
 		2C9FB2462D92E1C400D43054 /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9FB2452D92E1C400D43054 /* CharacterManager.swift */; };
 		2CD3E8752D96B83800153072 /* MVXProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3E8742D96B83800153072 /* MVXProtocol.swift */; };
+		2CD3E8792D96DC1C00153072 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD3E8782D96DC1C00153072 /* GameRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2C9FB23F2D92D80F00D43054 /* GameAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAssembly.swift; sourceTree = "<group>"; };
 		2C9FB2452D92E1C400D43054 /* CharacterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterManager.swift; sourceTree = "<group>"; };
 		2CD3E8742D96B83800153072 /* MVXProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVXProtocol.swift; sourceTree = "<group>"; };
+		2CD3E8782D96DC1C00153072 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				2C9FB23F2D92D80F00D43054 /* GameAssembly.swift */,
 				2C11B1352D91D050004FBFC9 /* GameViewController.swift */,
 				2C9FB23D2D92D42400D43054 /* GamePresenter.swift */,
+				2CD3E8782D96DC1C00153072 /* GameRouter.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				2CD3E8752D96B83800153072 /* MVXProtocol.swift in Sources */,
 				2C9FB2462D92E1C400D43054 /* CharacterManager.swift in Sources */,
 				2C11B1322D91D050004FBFC9 /* AppDelegate.swift in Sources */,
+				2CD3E8792D96DC1C00153072 /* GameRouter.swift in Sources */,
 				2C11B1342D91D050004FBFC9 /* SceneDelegate.swift in Sources */,
 				2C9FB23E2D92D42400D43054 /* GamePresenter.swift in Sources */,
 				2C9FB2382D92CE5F00D43054 /* Character.swift in Sources */,
