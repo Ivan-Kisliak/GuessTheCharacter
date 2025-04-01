@@ -15,13 +15,13 @@ final class GameViewController: UIViewController {
     var presenter: IGamePresenter?
     
     private let titleLabel = UILabel()
-    private let characterOneButton = UIButton()
-    private let characterTwoButton = UIButton()
-    private let characterThreeButton = UIButton()
+    private lazy var characterButtons: [UIButton] = (0..<3).map { _ in UIButton() }
+
     private let stackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.loadGame()
         setupView()
         setupLayout()
     }
@@ -31,8 +31,6 @@ final class GameViewController: UIViewController {
 private extension GameViewController {
     func setupView() {
         view.backgroundColor = .white
-        
-        presenter?.loadGame()
         
         setupStackView()
         setupTitleLabel()
@@ -58,12 +56,8 @@ private extension GameViewController {
         presenter?.characterSelected(at: sender.tag)
     }
     
-    func provideCharactrerButtons() -> [UIButton] {
-        [characterOneButton, characterTwoButton, characterThreeButton]
-    }
-    
     func setupCharacterButtons() {
-        provideCharactrerButtons().enumerated().forEach {
+        characterButtons.enumerated().forEach {
             setupCharacterButton($1, tag: $0)
         }
     }
@@ -74,7 +68,7 @@ private extension GameViewController {
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.addArrangedSubview(titleLabel)
-        provideCharactrerButtons().forEach {
+        characterButtons.forEach {
             stackView.addArrangedSubview($0)
         }
     }
@@ -85,7 +79,7 @@ private extension GameViewController {
     func setupLayout() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        provideCharactrerButtons().forEach {
+        characterButtons.forEach {
             NSLayoutConstraint.activate([
                 $0.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45),
                 $0.heightAnchor.constraint(equalTo: $0.widthAnchor)
@@ -105,7 +99,7 @@ extension GameViewController: IGameViewController {
         titleLabel.text = "Кто это: \(viewModel.question)?"
         viewModel.characters.enumerated().forEach {
             if let imageName = $1.image {
-                provideCharactrerButtons()[$0].setImage(UIImage(named: imageName), for: .normal)
+                characterButtons[$0].setImage(UIImage(named: imageName), for: .normal)
             }
         }
     }
